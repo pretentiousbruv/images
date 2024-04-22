@@ -1,8 +1,25 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1>Hello World</h1>
-<p>The Game.</p>
-<img src = "https://raw.githubusercontent.com/pretentiousbruv/images/main/image_source/101_Skyline_Dr/1.jpg" alt = "">
+  <script>
+    fetch("https://github.com/pretentiousbruv/images/blob/main/get_image_urls/101_skyline_dr.json")
+      .then(response => response.json())
+      .then(data => {
+        const imageURLs = data; // Assuming the URLs are directly in the data
+        const imageContainer = document.createElement("div"); // Create a container for the images
+
+        for (const imageUrl of imageURLs) {
+          const image = document.createElement("img");
+          image.src = imageUrl;
+          image.alt = "Image description"; // Add alt text for accessibility
+          imageContainer.appendChild(image);
+        }
+
+        document.body.appendChild(imageContainer); // Add the container to the body
+      })
+      .catch(error => {
+        console.error('Error fetching JSON data:', error);
+      });
+  </script>
 </body>
 </html>
