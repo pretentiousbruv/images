@@ -5,7 +5,7 @@
     fetch("https://pretentiousbruv.github.io/images/get_image_urls/101_skyline_dr.json")
       .then(response => response.json())
       .then(data => {
-        const imageURLs = data; // Assuming the URLs are directly in the data
+        const imageURLs = data["images"]; // Assuming the URLs are directly in the data
         const imageContainer = document.createElement("div"); // Create a container for the images
 
         for (const imageUrl of imageURLs) {
